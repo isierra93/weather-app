@@ -1,0 +1,44 @@
+{
+  "coord": {
+    "lon": -59.8585,
+    "lat": -36.777
+  },
+  "weather": [
+    {
+      "id": 803,
+      "main": "Clouds",
+      "description": "broken clouds",
+      "icon": "04d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 13.23,
+    "feels_like": 11.71,
+    "temp_min": 13.23,
+    "temp_max": 13.23,
+    "pressure": 1018,
+    "humidity": 42,
+    "sea_level": 1018,
+    "grnd_level": 1001
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 3.96,
+    "deg": 135,
+    "gust": 5.16
+  },
+  "clouds": {
+    "all": 57
+  },
+  "dt": 1695561007,
+  "sys": {
+    "country": "AR",
+    "sunrise": 1695548772,
+    "sunset": 1695592615
+  },
+  "timezone": -10800,
+  "id": 3436199,
+  "name": "Azul",
+  "cod": 200
+}
