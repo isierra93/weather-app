@@ -5,7 +5,7 @@ export default function WeatherCard ({ weather }) {
     
     return(
         <div className="card">
-        <h3>Clima en {name} - {main}</h3>
+        <h3>{name} - {main}</h3>
         <img src={link} alt={description} />
             <div>
             <h3>Temperatures</h3>

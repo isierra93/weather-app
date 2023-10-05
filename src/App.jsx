@@ -1,90 +1,77 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import WeatherCard from "../src/components/WeatherCard.jsx"
 import Error from "../src/components/Error.jsx"
 import Footer from "../src/components/Footer.jsx"
+import Logo from './components/Logo.jsx'
 import './App.css'
-import API_DATA from "../src/data/API_DATA.json"
-import responseExample from "../src/mocks/responseExample.json"
-import notFoundWeather from "../src/mocks/notFoundWeather.json"
 
+const API_KEY = import.meta.env.VITE_API_KEY
 
 function App() {
   const [city, setCity] = useState('')
-  const [country, setCountry] = useState('')
   const [weather, setWeather] = useState('')
-  const [errorMsg, setErrorMsg] = useState('')
+  const [error, setError] = useState({
+    error: false,
+    message: '',
+  })
 
-  /* useEffect(() =>{
-
-  },[]) */
-  //Armar USEEFFECT para updatear los estados
-
-
- //Aca se actualizan los states para geolocalizar
-  function updateCity (e) {
-    setCity(e.target.value)
-  }
-
-  function updateCountry (e){
-    setCountry(e.target.value)
-  }
-
-  //Aca se submiten y realizan el llamado al API
-  async function handleChange (e){
+  async function onSubmit (e){
     e.preventDefault()
-    getWeather({CITY_SEARCH:city, COUNTRY_CODE:country})
-    const responseWeather = await getWeather({CITY_SEARCH:city, COUNTRY_CODE:country})
-    console.log(responseWeather);
-
-    //Si no encuentra MAIN, setea state de error
-    const {main, weather, wind, name} = responseExample
-    if(!main){
-      const { message } = notFoundWeather
-      setErrorMsg(message)
-      return
-    }
-    const weatherResponse = {
-      ...main,
-      ...weather[0],
-      ...wind,
-      name:name
-    }
-    setErrorMsg('')
-    setWeather(weatherResponse)
-  }
-
-  async function getWeather({CITY_SEARCH, COUNTRY_CODE}){
-     try {
-      const { API_KEY } = API_DATA
-      
-      console.log({CITY_SEARCH,COUNTRY_CODE});
-      /* const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${CITY_SEARCH},${COUNTRY_CODE}&units=metric&appid=${API_KEY}`)
-      const json = response.json()
-      
-      return json */
-
+    setError({
+      error: false,
+      message: '',
+    })
+    try {
+      if(!city.trim()) throw { message: 'The field city is required' }
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`)
+      const data = await response.json()
+      console.log(data);
+      const {main, weather, wind, name, message} = data
+      if(!weather || weather.length < 0){
+        setError({
+          error:true,
+          message: message
+        })
+      }else{
+        const weatherResponse = {
+          ...main,
+          ...weather[0],
+          ...wind,
+          name:name
+        }
+        setWeather(weatherResponse)
+      }
     } catch (error) {
-      throw new Error('Error al buscar clima.')
+      setError({
+        error: true,
+        message: error.message
+      })
     }
   }
+
   return (
     <>
-      {weather ? <WeatherCard weather={weather}/> : <Error message={errorMsg} />}
+      <h1>Weather App</h1>
+      {weather ? <WeatherCard weather={weather}/> : null}
+      <div>
+
+      </div>
       <div className="card">
-        <form action="submit" onSubmit={handleChange}>
-        <input 
-          required
-          type="text" 
-          placeholder='Write your city...'
-          onChange={(e) => updateCity(e)}
-        />
-        <select name="myselect" id="myselect" defaultValue={'AR'} onChange={(e) => updateCountry(e)}>
-          <option value="AR">ARGENTINA</option>
-          <option value="UR">URUGUAY</option>
-        </select>
-        <button>Get Weather</button>
+        <form action="submit" onSubmit={onSubmit}>
+          <input 
+            required
+            type="text" 
+            placeholder='Write your city...'
+            value={city}
+            onChange={(e) => setCity(e.target.value)}
+          />
+          {error.error ? <Error error={error} /> : null}
+            <button>
+            Get Weather
+            </button>
         </form>
       </div>
+      <Logo />
       <Footer />
     </>
   )

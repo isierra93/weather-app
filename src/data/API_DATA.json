@@ -1,5 +1,0 @@
-{
-    "API_KEY":"bbdfe80c99251ab321db6eba730c474d",
-    "EXAMPLE_RESPONSE":"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={APIkey}",
-    "ARG":"https://api.openweathermap.org/data/2.5/weather?q=TANDIL,AR&units=metric&appid=bbdfe80c99251ab321db6eba730c474d"
-}

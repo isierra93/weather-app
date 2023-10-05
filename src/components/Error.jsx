@@ -1,9 +1,9 @@
-export default function Error ({ message }) {
+export default function Error ({ error }) {
     
     return(
         <span>
             <p style={{color:"red"}}>
-                { message }
+                { error.message }
             </p>
         </span>
     )
