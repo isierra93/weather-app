@@ -37,6 +37,25 @@
   padding: 2em;
 }
 
-.read-the-docs {
-  color: #888;
+.listOfTemps{
+  list-style: none;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding: .5em;
+  width: 10rem;
+  height: 4rem;
+  position: absolute;
+}
+
+.github {
+  right: 0;
+  bottom: 0;
+}
+
+.powered {
+  left: 0;
+  bottom: 0;
 }

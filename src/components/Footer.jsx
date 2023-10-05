@@ -1,6 +1,6 @@
 export default function Footer (){
     return(
-        <footer className="card">
+        <footer className="footer github">
             <div>
                 Github
             </div>

@@ -25,7 +25,6 @@ function App() {
       if(!city.trim()) throw { message: 'The field city is required' }
       const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`)
       const data = await response.json()
-      console.log(data);
       const {main, weather, wind, name, message} = data
       if(!weather || weather.length < 0){
         setError({
@@ -46,7 +45,13 @@ function App() {
         error: true,
         message: error.message
       })
+    }finally{
+      setCity('')
     }
+  }
+
+  function onClick (){
+    setCity('')
   }
 
   return (
@@ -57,7 +62,7 @@ function App() {
 
       </div>
       <div className="card">
-        <form action="submit" onSubmit={onSubmit}>
+        <form action="submit" onSubmit={onSubmit} className='form'>
           <input 
             required
             type="text" 

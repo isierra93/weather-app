@@ -9,7 +9,7 @@ export default function WeatherCard ({ weather }) {
         <img src={link} alt={description} />
             <div>
             <h3>Temperatures</h3>
-                <ul>
+                <ul className="listOfTemps">
                     <li>Actual: {temp} °C - RealFeel: {feels_like} °C - Humidity: {humidity} %</li>
                     <li>Max: {temp_max} °C</li>
                     <li>Min: {temp_min} °C</li>
