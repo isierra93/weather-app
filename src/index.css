@@ -13,11 +13,15 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+#root {
+  text-align: center;
+  margin: 0 auto;
+}
 
 a {
   font-weight: 500;
   color: #8707ff;
-  text-decoration: inherit;
+  text-decoration: none;
 }
 a:hover {
   color: #535bf2;
@@ -37,9 +41,9 @@ h1 {
 }
 
 form {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
-  
 }
 
 input {
@@ -52,7 +56,6 @@ input {
   padding: 0.6em 1.2em;
   background: transparent;
  }
- 
  input:active {
   box-shadow: 2px 2px 15px #8707ff inset;
  }
@@ -74,4 +77,67 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.titleWeb {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 1rem;
+}
+
+.logo {
+  height: 2.5em;
+  width: 2.5em;
+  border-radius: 50%;
+  will-change: filter;
+  transition: filter 300ms;
+  animation-name: logo-spin;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #8707ff);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.listOfTemps{
+  list-style: none;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  padding: .5em;
+  width: 10rem;
+  height: 4rem;
+  position: absolute;
+}
+
+.github {
+  right: 0;
+  bottom: .5em;
+}
+
+.powered {
+  left: 0;
+  bottom: 0;
+}
+
+.love {
+  color: #fd0000;
 }

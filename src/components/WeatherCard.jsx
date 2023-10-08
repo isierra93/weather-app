@@ -5,17 +5,18 @@ export default function WeatherCard ({ weather }) {
     
     return(
         <div className="card">
-        <h3>{name} - {main}</h3>
+        <h3>{name}</h3>
         <img src={link} alt={description} />
+        <h3>{main}</h3>
             <div>
-            <h3>Temperatures</h3>
                 <ul className="listOfTemps">
-                    <li>Actual: {temp} °C - RealFeel: {feels_like} °C - Humidity: {humidity} %</li>
+                    <li><b>Actual: {temp} °C - RealFeel: {feels_like} °C</b></li>
                     <li>Max: {temp_max} °C</li>
                     <li>Min: {temp_min} °C</li>
                 </ul>
             </div>
             <div>
+                <span>Humidity: {humidity} %</span>
                 <span>Wind: {gust} - Speed: {speed}</span>
             </div>
         </div>

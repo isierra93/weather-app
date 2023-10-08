@@ -3,7 +3,6 @@ import WeatherCard from "../src/components/WeatherCard.jsx"
 import Error from "../src/components/Error.jsx"
 import Footer from "../src/components/Footer.jsx"
 import Logo from './components/Logo.jsx'
-import './App.css'
 
 const API_KEY = import.meta.env.VITE_API_KEY
 
@@ -50,13 +49,9 @@ function App() {
     }
   }
 
-  function onClick (){
-    setCity('')
-  }
-
   return (
     <>
-      <h1>Weather App</h1>
+      <h1 className='titleWeb'>Weather App</h1>
       {weather ? <WeatherCard weather={weather}/> : null}
       <div>
 
