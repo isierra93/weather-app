@@ -3,8 +3,9 @@ import WeatherCard from "../src/components/WeatherCard.jsx"
 import Error from "../src/components/Error.jsx"
 import Footer from "../src/components/Footer.jsx"
 import Logo from './components/Logo.jsx'
-
-const API_KEY = import.meta.env.VITE_API_KEY
+import { useCity } from "./hooks/useCity.js"
+import { fetchData } from "./services/fetchData.js"
+import { dataReorganizer } from './services/dataReorganizer.js'
 
 function App() {
   const [city, setCity] = useState('')
@@ -22,23 +23,9 @@ function App() {
     })
     try {
       if(!city.trim()) throw { message: 'The field city is required' }
-      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`)
-      const data = await response.json()
-      const {main, weather, wind, name, message} = data
-      if(!weather || weather.length < 0){
-        setError({
-          error:true,
-          message: message
-        })
-      }else{
-        const weatherResponse = {
-          ...main,
-          ...weather[0],
-          ...wind,
-          name:name
-        }
-        setWeather(weatherResponse)
-      }
+      const data = await fetchData(city)
+      const weatherResponse = dataReorganizer(data)
+      setWeather(weatherResponse)
     } catch (error) {
       setError({
         error: true,

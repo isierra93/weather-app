@@ -17,6 +17,8 @@ export default function WeatherCard ({ weather }) {
             </div>
             <div>
                 <span>Humidity: {humidity} %</span>
+            </div>
+            <div>
                 <span>Wind: {gust} - Speed: {speed}</span>
             </div>
         </div>
