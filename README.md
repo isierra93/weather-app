@@ -1,8 +1,46 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Aplicacion del clima
 
-Currently, two official plugins are available:
+Aplicacion que permite obtener los datos del clima actual ingresando la ciudad deseada.
+Construida con Vite + React.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+![Logo](https://i.postimg.cc/XqVzZybt/Captura.png)
+
+
+## API utilizada
+
+- [OpenWeatherMap](https://openweathermap.org/current)
+
+
+## Variables de entorno
+
+Para ejecutar este proyecto en local es necesario adquirir una KEY de OpenWeatherMap y añadirla a tu archivo .env.local
+
+`VITE_API_KEY`
+## Ejectuar localmente
+
+Clonar el proyecto
+
+```bash
+  git clone https://github.com/isierra93/weather-app
+```
+
+Ir al directorio del proyecto
+
+```bash
+  cd weather-app
+```
+
+Instalar dependencias
+
+```bash
+  npm install
+```
+
+Ejecutar el servidor
+
+```bash
+  npm run dev
+```
+
